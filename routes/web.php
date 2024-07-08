@@ -1,7 +1,6 @@
 <?php
 
 /** @var \Laravel\Lumen\Routing\Router $router */
-use Illuminate\Support\Facades\DB;
 use App\Models\ContactMe;
 
 /*
@@ -13,14 +12,10 @@ use App\Models\ContactMe;
 | It is a breeze. Simply tell Lumen the URIs it should respond to
 | and give it the Closure to call when that URI is requested.
 |
-*/
+ */
 
 $router->get('/', function () use ($router) {
     return $router->app->version();
 });
 
-use MongoDB\Client;
-$router->get('/test-mongodb', function () {
-    $userModel = new ContactMe();
-    return response()->json($userModel->all());
-});
+$router->post('/contact-me-submit', 'ContactMeController@store');
