@@ -1,6 +1,8 @@
 <?php
 
 /** @var \Laravel\Lumen\Routing\Router $router */
+use Illuminate\Support\Facades\DB;
+use App\Models\ContactMe;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,4 +19,8 @@ $router->get('/', function () use ($router) {
     return $router->app->version();
 });
 
-
+use MongoDB\Client;
+$router->get('/test-mongodb', function () {
+    $userModel = new ContactMe();
+    return response()->json($userModel->all());
+});
