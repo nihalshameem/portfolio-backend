@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\ContactMe;
+use App\Models\ContactMessage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -36,18 +36,16 @@ class ContactMeController extends Controller
             return response()->json($data, 422);
         }
 
-        $userModel = new ContactMe();
-
-        $data = $request->only(['first_name', 'last_name', 'email', 'message']);
-        $insertResult = $userModel->create($data);
-
-        if ($insertResult->isAcknowledged()) {
-            $data['_id'] = $insertResult->getInsertedId();
-        }
+         $message = new ContactMessage();
+        $message->first_name = $request->input('first_name');
+        $message->last_name = $request->input('last_name');
+        $message->email = $request->input('email');
+        $message->message = $request->input('message');
+        $message->save();
 
         return response()->json([
             "status" => "success",
-            "data" => $data,
+            "data" => $message,
             "message" => "submitted successfully",
         ], 201);
     }
