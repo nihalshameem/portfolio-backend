@@ -15,6 +15,7 @@ class ExampleMiddleware
      */
     public function handle($request, Closure $next)
     {
+        \Log::info("message");
         return $next($request);
     }
 }
