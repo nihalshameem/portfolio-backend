@@ -16,7 +16,6 @@ class CorsMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
-        \Log::info("message");
         $response = $next($request);
 
         $response->headers->set('Access-Control-Allow-Origin', '*');
