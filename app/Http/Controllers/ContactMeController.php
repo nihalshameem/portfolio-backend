@@ -77,4 +77,27 @@ class ContactMeController extends Controller
             ], 500);
         }
     }
+
+    public function list()
+    {
+        $messages = ContactMessage::paginate(10);
+        return view('contactMe.index', compact('messages'));
+    }
+
+    // Remove the specified project from storage
+    public function destroy($id)
+    {
+        $contactMe = ContactMessage::find($id);
+        if (empty($contactMe) === false) {
+            $contactMe->delete();
+        }
+
+        return redirect()->route('contactMe.list')->with('success', 'Contact Me deleted successfully.');
+    }
+
+    public function show($id)
+    {
+        $message = ContactMessage::findOrFail($id);
+        return view('contactMe.show', compact('message'));
+    }
 }
