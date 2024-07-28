@@ -1,10 +1,10 @@
 <?php
 
+use App\Http\Controllers\ContactMeController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProjectsController;
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\Artisan;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,4 +28,7 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::resource('projects', ProjectsController::class);
+    Route::get('contact-me', [ContactMeController::class, 'list'])->name('contactMe.list');
+    Route::delete('contact-me/delete/{id}', [ContactMeController::class, 'destroy'])->name('contactMe.destroy');
+    Route::get('contact-me/view/{id}', [ContactMeController::class, 'show'])->name('contactMe.view');
 });
