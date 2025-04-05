@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title')</title>
-    <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets/css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('public/' . 'assets/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('public/' . 'assets/css/app.css') }}" rel="stylesheet">
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -18,6 +18,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/projects">Projects</a>
                 </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/certificates">Certificates</a>
+                    </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/contact-me">contact Me</a>
                 </li>
@@ -44,8 +47,8 @@
     <div class="container mt-4">
         @yield('content')
     </div>
-    <script src="{{ asset('assets/js/jquery-3.5.1.slim.min.js') }}"></script>
-    <script src="{{ asset('assets/js/popper.min.js') }}"></script>
-    <script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('public/' . 'assets/js/jquery-3.5.1.slim.min.js') }}"></script>
+    <script src="{{ asset('public/' . 'assets/js/popper.min.js') }}"></script>
+    <script src="{{ asset('public/' . 'assets/js/bootstrap.min.js') }}"></script>
 </body>
 </html>

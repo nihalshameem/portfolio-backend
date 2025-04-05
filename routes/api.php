@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ContactMeController;
 use App\Http\Controllers\ProjectsController;
+use App\Http\Controllers\CertificatesController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -23,5 +24,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::post('/contact-me-submit', [ContactMeController::class, 'store'])->name('contact.store');
 
 Route::get('/projects', [ProjectsController::class, 'getList'])->name('project.get');
-
 Route::get('/project/{slug}', [ProjectsController::class, 'getProject'])->name('project.get');
+
+Route::get('/certificates', [CertificatesController::class, 'getList'])->name('certificate.get');
+Route::get('/certificate/{slug}', [CertificatesController::class, 'getCertificate'])->name('certificate.get');
