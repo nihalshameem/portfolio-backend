@@ -22,7 +22,7 @@
                     @foreach ($certificates as $project)
                         <tr>
                             <td>
-                                <img src="{{ asset('storage/' . $project->image) }}" alt="Certificate Image"
+                                <img src="{{ asset($project->image_path) }}" alt="Certificate Image"
                                     style="width: 100px; height: auto;">
                             </td>
                             <td>{{ $project->title }}</td>
